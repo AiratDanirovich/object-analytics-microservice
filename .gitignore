@@ -1,0 +1,6 @@
+
+venv
+input_data/*
+output_data/*
+.idea
+.git
