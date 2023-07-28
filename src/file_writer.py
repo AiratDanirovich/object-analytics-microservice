@@ -5,18 +5,25 @@ from datetime import datetime
 def excel_write(file_path, table_lst, pf_list=[]):
     # добавим дату в название файла для создания нескольких таблиц
 
-    #output_path = file_path[:-5] + '_{}'.format(datetime.now().strftime("%d%m%Y_%H%M%S")) + file_path[-5:]
+    # output_path = file_path[:-5] + '_{}'.format(datetime.now().strftime("%d%m%Y_%H%M%S")) + file_path[-5:]
 
     output_path = file_path
+
     # создание excel книги
     workbook = xlsxwriter.Workbook(output_path)
 
     # название листа
     worksheet = workbook.add_worksheet("Object Worksheet")
 
+    # формат ячеек для настройки параметров текста
+    # в нашем случае жирный текст
+    cell_format_1 = workbook.add_format()
+    cell_format_1.set_bold()
+    cell_format_1.set_align('center')
+
     # запишем названия столбцов 1 и 2
-    worksheet.write(0, 0, 'Название объекта')
-    worksheet.write(0, 1, 'Дебит жидкости')
+    worksheet.write(0, 0, 'Название объекта', cell_format_1)
+    worksheet.write(0, 1, 'Дебит жидкости', cell_format_1)
 
     row = 1
     col = 0
@@ -31,13 +38,17 @@ def excel_write(file_path, table_lst, pf_list=[]):
 
     # Если в параметрах есть запись давления, добавим столбец с его значениями
     if pf_list:
-        worksheet.write(0, 2, 'Фактическое давление')
+        worksheet.write(0, 2, 'Фактическое давление', cell_format_1)
         row = 1
         col = 2
         for element in range(1, (len(pf_list))):
             worksheet.write(row, col, pf_list[element])
             row += 1
 
+
+    # автоматический размер ячеек
+
+    worksheet.autofit()
     workbook.close()
 
 
