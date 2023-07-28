@@ -1,4 +1,4 @@
-from file_reader import jsonreader
+from file_reader import json_reader
 from file_writer import excel_write, zero_qg_writer
 from graph_creator import matplot_graph
 import config
@@ -9,7 +9,7 @@ output_file_path = config.output_path
 if __name__ == "__main__":
     # выполним чтение json файла и запишем данные в 3 списка -
     # список с именем и дебитом, id для объектов с 0 дебитом и список давлений
-    table_list, qg0lst, p_fak_list = jsonreader(
+    table_list, qg0lst, p_fak_list = json_reader(
         input_file_path,  # путь для входных данных
         config.tipn,  # tipn параметр
         config.sost_t,  # sost_t параметр

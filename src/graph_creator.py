@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import mpld3
 
+
 # создание matplot графика + сохранение в html и jpg
 def matplot_graph(table_list):
     # много параметров по оси x - лучше выставить размер побольше

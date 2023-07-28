@@ -3,7 +3,7 @@ import json
 
 #  метод, отвечающий за открытие и обработку json:
 
-def jsonreader(input_path, conf_tipn, conf_sostt, conf_minqg, conf_maxqg, conf_pfak=0):
+def json_reader(input_path, conf_tipn, conf_sostt, conf_minqg, conf_maxqg, conf_pfak=0):
     # считывание json-файла
     with open(input_path, 'r', encoding='utf-8') as f:
         data = json.loads(f.read())
