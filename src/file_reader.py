@@ -17,7 +17,7 @@ def json_reader(input_path, conf_tipn, conf_sostt, conf_minqg, conf_maxqg, conf_
                 data = json.loads(f.read())
 
                 # проверка наличия ключа data в файле
-                if 'data' in data:
+                if 'data' in data and data['data'] != []:
 
                     # инициализация списков
                     table_list = []
@@ -74,7 +74,7 @@ def json_reader(input_path, conf_tipn, conf_sostt, conf_minqg, conf_maxqg, conf_
                     # передаем 3 списка: имя + дебит, нулевые дебиты и список давлений
                     return table_list, list_qg_0_ids, list_pfak
                 else:
-                    raise Exception("Incorrect file structure - data row does not exist")
+                    raise Exception("Incorrect file structure - incorrect data row" )
         else:
             raise Exception("Empty file")
 
