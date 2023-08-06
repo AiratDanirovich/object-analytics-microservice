@@ -18,6 +18,7 @@ def json_reader(input_path, conf_tipn, conf_sostt, conf_minqg, conf_maxqg, conf_
 
                 # проверка наличия ключа data в файле
                 if 'data' in data:
+
                     # инициализация списков
                     table_list = []
                     list_qg_0_ids = []
@@ -26,14 +27,29 @@ def json_reader(input_path, conf_tipn, conf_sostt, conf_minqg, conf_maxqg, conf_
                     # получаем из data нужные нам поля:
                     for i in range(len(data['data'])):
 
-                        # поля из таблицы - tipn, id, cnt, qg, p_fak и sost_t:
+                        # проверка наличия нужных нам полей в таблице
+                        if 'tipn' not in data['data'][i]:
+                            raise Exception('no tipn for object with id %s' % (data['data'][i]['id']))
 
+                        if 'cnt' not in data['data'][i]:
+                            raise Exception('no cnt for object with id  %s' % (data['data'][i]['id']))
+                        if 'qg' not in data['data'][i]:
+                            raise Exception('no qg for object with id  %s' % (data['data'][i]['id']))
+                        if 'sost_t' not in data['data'][i]:
+                            raise Exception('no sost_t for object with id  %s' % (data['data'][i]['id']))
+
+                        # поля tipn, id, cnt и qg в таблице
                         table_tipn_field = data['data'][i]['tipn']
                         table_id_field = data['data'][i]['id']
                         table_cnt_field = data['data'][i]['cnt']
                         table_qg_field = data['data'][i]['qg']
-                        table_pfak_field = data['data'][i]['p_fak']
+
                         table_sostt_field = data['data'][i]['sost_t']
+
+                        # отдельная проверка для pfak - это поле не всегда нужно выводить
+                        if 'p_fak' not in data['data'][i] and conf_pfak == 1:
+                            raise Exception('no p_fak for object with id  %s' % (data['data'][i]['id']))
+                        table_pfak_field = data['data'][i]['p_fak']
 
                         # проходим по json-файлу и ищем записи объектов с подходящими нам параметрами,
                         # они указаны в конфиге - sost_t, agent, tipn, min qg и max qg:
