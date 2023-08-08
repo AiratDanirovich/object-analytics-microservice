@@ -2,3 +2,5 @@ venv
 .idea
 .git
 input_data/pipe_data.json
+output_data/object_data.xlsx
+output_data/plotly_graph.html

@@ -53,7 +53,7 @@ def excel_write(file_path, table_lst, pf_list=[]):
 
     # автоматический размер ячеек
 
-    worksheet.autofit()
+    # worksheet.autofit()
     workbook.close()
     logger.info("excel file final version")
 

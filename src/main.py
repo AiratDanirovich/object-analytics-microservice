@@ -45,9 +45,9 @@ if __name__ == "__main__":
 
     logging.info("Zero qg's were checked")
 
-    # excel_write(Config.output_path,  # путь для выходных данных
-    #         table_list,  # список с id, cnt и qg объектов
-    #         p_fak_list)  # список с давлениями объектов
+    excel_write(Config.output_path,  # путь для выходных данных
+            table_list,  # список с id, cnt и qg объектов
+            p_fak_list)  # список с давлениями объектов
     logger.info('Excel file was created')
     # построение графика с объектами и их дебитами
 

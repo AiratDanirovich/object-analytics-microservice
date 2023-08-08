@@ -36,3 +36,5 @@ class Config:
     p_fak_write = data['params']['p_fak_write']
     input_path = data['params']['input_path']
     output_path = data['params']['output_path']
+    is_scatter = data['params']['is_scatter']
+
