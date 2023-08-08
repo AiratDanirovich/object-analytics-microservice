@@ -1,0 +1,14 @@
+{
+  "params":
+      {
+      "sost_t": 58,
+      "agent": 106,
+      "qg_max": 1000,
+      "qg_min": 0,
+      "tipn": 1,
+      "p_fak_write": 1,
+      "input_path": "../input_data/pipe_data.json",
+      "output_path": "../output_data/object_data.xlsx"
+      }
+
+}
