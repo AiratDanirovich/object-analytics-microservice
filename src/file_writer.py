@@ -58,7 +58,6 @@ def excel_write(file_path, table_lst, pf_list=[]):
     logger.info("excel file final version")
 
 def zero_qg_writer(zero_qg_id_lst):
-    lst = zero_qg_id_lst
     logger.info('----------- zero qg list below ---------------------')
-    logger.info(lst)
+    logger.info(zero_qg_id_lst)
     logger.info('Wrote list with zero qg')

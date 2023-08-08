@@ -5,7 +5,20 @@ from log_config import log_conf
 logger = logging.getLogger(__name__)
 
 def json_reader(input_path, conf_tipn, conf_sostt, conf_minqg, conf_maxqg, conf_pfak=0):
-    
+    """Метод выполняет загрузку исходных данных.
+
+    Parameters
+    ----------
+    input_path : string
+        путь к файлу с исходными данными
+
+
+    Returns
+    -------
+    list
+        , ,
+
+    """
 
 
     # считывание json-файла
@@ -29,7 +42,7 @@ def json_reader(input_path, conf_tipn, conf_sostt, conf_minqg, conf_maxqg, conf_
 
                     # инициализация списков
                     table_list = []
-                    list_qg_0_ids = []
+                    list_qg_0_ids = {}
                     list_pfak = []
 
                     # получаем из data нужные нам поля:
@@ -74,7 +87,7 @@ def json_reader(input_path, conf_tipn, conf_sostt, conf_minqg, conf_maxqg, conf_
 
                                 # сохраняем id объектов с нулевым qg:
                                 if table_qg_field == 0.0:
-                                    list_qg_0_ids.append(table_id_field)
+                                    list_qg_0_ids[table_id_field] = data['data'][i]['cnam']
                                 # сохраняем давления в список, если выбрана их запись:
                                 if conf_pfak == 1:
                                     list_pfak.append(table_pfak_field)
