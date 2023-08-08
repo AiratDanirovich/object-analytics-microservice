@@ -3,6 +3,11 @@ import mpld3
 import plotly.graph_objects as go
 import plotly.io as pio
 import plotly.express as px
+import logging
+import plotly
+from log_config import log_conf
+
+logger = logging.getLogger(__name__)
 
 
 # создание matplot графика + сохранение в html и jpg
@@ -16,8 +21,10 @@ def matplot_graph(table_list):
     plt.xlabel("Объект")
     plt.ylabel("Дебит объекта")
 
-    plt.savefig('../output_data/debit_object_graph.jpg')
-    mpld3.save_html(fig, '../output_data/debit_object_graph.html')
+    plt.savefig('../output_data/matplot_graph.jpg')
+    mpld3.save_html(fig, '../output_data/html_matplot_graph.html')
+
+    logger.info('matplot graph was created')
 
 
 # график plotly
@@ -39,4 +46,9 @@ def plotly_graph(table_list):
         yaxis_title=dict(text='Debit size', font=dict(size=16, color='#000000')),
     )
 
-    fig.show()
+    # fig.show()
+
+    # сохраняем как html файл
+    plotly.offline.plot(fig, filename='../output_data/plotly_graph.html')
+
+    logger.info('matplot graph was created')

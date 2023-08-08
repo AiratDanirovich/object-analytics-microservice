@@ -1,6 +1,8 @@
 import json
 import os
-
+import logging
+from log_config import log_conf
+logger = logging.getLogger(__name__)
 
 #  метод, отвечающий за открытие и обработку json:
 
@@ -12,12 +14,17 @@ def json_reader(input_path, conf_tipn, conf_sostt, conf_minqg, conf_maxqg, conf_
 
         # проверка на пустой файл
         if os.stat(input_path).st_size > 0:
+
+            logger.info('data file exists and not empty')
+
             with open(input_path, 'r', encoding='utf-8') as f:
 
                 data = json.loads(f.read())
 
                 # проверка наличия ключа data в файле
                 if 'data' in data and data['data'] != []:
+
+                    logger.info('file and data row were opened')
 
                     # инициализация списков
                     table_list = []
@@ -72,11 +79,18 @@ def json_reader(input_path, conf_tipn, conf_sostt, conf_minqg, conf_maxqg, conf_
                                     list_pfak.append(table_pfak_field)
 
                     # передаем 3 списка: имя + дебит, нулевые дебиты и список давлений
+
+                    logger.info('successful file operation')
+
                     return table_list, list_qg_0_ids, list_pfak
                 else:
+                    logger.error('Incorrect file structure - incorrect data row')
                     raise Exception("Incorrect file structure - incorrect data row" )
+
         else:
+            logger.error('Empty file')
             raise Exception("Empty file")
 
     else:
+        logger.error('File does not exist')
         raise Exception("File does not exist")

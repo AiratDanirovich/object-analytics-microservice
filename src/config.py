@@ -17,7 +17,7 @@ class Config:
     if 'qg_min' not in data['params']:
         raise Exception('no config qg_min provided')
 
-    if 'config_p_fak_write' not in data['params']:
+    if 'p_fak_write' not in data['params']:
         raise Exception('no config p_fak_write provided')
 
     if 'input_path' not in data['params']:
