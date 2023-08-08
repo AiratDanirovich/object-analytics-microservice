@@ -14,6 +14,22 @@ if __name__ == "__main__":
     # выполним чтение json файла и запишем данные в 3 списка -
     # список с именем и дебитом, id для объектов с 0 дебитом и список давлений
 
+    '''
+    import time
+    t1=time.time()
+    test=[]
+    for i in range(1,int(1e6)):
+        if not i%2:
+            test.append(i/2)
+        else:
+            test.append(10)
+    print(time.time()-t1)
+    t1 = time.time()
+    test2 = []
+    test2 = [i/2 if not i%2 else 10 for i in range(1,int(1e6))]
+    print(time.time() - t1)
+    '''
+
     table_list, qg0lst, p_fak_list = json_reader(
         Config.input_path,  # путь для входных данных
         Config.tipn,  # tipn параметр
@@ -38,5 +54,5 @@ if __name__ == "__main__":
     # matplot_graph(table_list) # matplot
     logger.info('Matplot graph was created')
 
-    plotly_graph(table_list)  # plotly
+    plotly_graph(table_list, is_scatter=Config.is_scatter)  # plotly
     logger.info('Plotly graph was created')

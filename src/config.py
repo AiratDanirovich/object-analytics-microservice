@@ -6,6 +6,9 @@ class Config:
     with open(conf_path, 'r', encoding='utf-8') as f:
         data = json.loads(f.read())
 
+    if 'params' not in data:
+        raise Exception('no config params provided')
+
     if 'tipn' not in data['params']:
         raise Exception('no config tipn provided')
 

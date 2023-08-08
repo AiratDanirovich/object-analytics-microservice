@@ -4,9 +4,10 @@ import logging
 from log_config import log_conf
 logger = logging.getLogger(__name__)
 
-#  метод, отвечающий за открытие и обработку json:
-
 def json_reader(input_path, conf_tipn, conf_sostt, conf_minqg, conf_maxqg, conf_pfak=0):
+    
+
+
     # считывание json-файла
 
     # проверка на наличие файла

@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-import mpld3
+# import mpld3
 import plotly.graph_objects as go
 import plotly.io as pio
 import plotly.express as px
@@ -22,23 +22,25 @@ def matplot_graph(table_list):
     plt.ylabel("Дебит объекта")
 
     plt.savefig('../output_data/matplot_graph.jpg')
-    mpld3.save_html(fig, '../output_data/html_matplot_graph.html')
+    # mpld3.save_html(fig, '../output_data/html_matplot_graph.html')
 
     logger.info('matplot graph was created')
 
 
 # график plotly
-def plotly_graph(table_list):
+def plotly_graph(table_list, is_scatter=True):
     pio.renderers.default = "browser"
 
-    # столбчатая даиграмма
-    # fig = go.Figure(
-    #    data=[go.Bar(x=table_list[1::3], y=table_list[2::3])],
-    #    layout_title_text="Object and debit diagram"
-    # )
+    # столбчатая диаграмма
+    if not is_scatter:
+        fig = go.Figure(
+           data=[go.Bar(x=table_list[1::3], y=table_list[2::3])],
+           layout_title_text="Object and debit diagram"
+        )
 
     # точечный график
-    fig = px.scatter(x=table_list[1::3], y=table_list[2::3])
+    else:
+        fig = px.scatter(x=table_list[1::3], y=table_list[2::3])
 
     # подписи для осей
     fig.update_layout(
